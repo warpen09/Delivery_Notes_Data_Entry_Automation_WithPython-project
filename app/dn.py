@@ -24,14 +24,14 @@ for filename in pdfFiles:
 def look_for_pdf(path, pdf_files):
     for dirpath, dirnames, filenames in os.walk(path):
         for filename in [f for f in filenames if f.endswith(".pdf")]:
-            print(filename)
-            pdf_files.append(os.path.join(dirpath, filename))
-
+            #pdf_files.append(os.path.join(dirpath, filename))
+            pdf_files.append(filename)
+            
 
 def main():
     look_for_pdf(path_to_pdf, pdf_Files)
-    #for pdf_file in pdf_Files:
-    #    print(pdf_file)
+    
 
 if __name__ == "__main__":
     main()
+    print(pdf_Files)
