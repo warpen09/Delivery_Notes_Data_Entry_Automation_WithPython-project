@@ -30,6 +30,8 @@ def look_for_pdf(path, pdf_files):
 
 def main():
     look_for_pdf(path_to_pdf, pdf_Files)
+    #for pdf_file in pdf_Files:
+    #    print(pdf_file)
 
 if __name__ == "__main__":
     main()
