@@ -20,12 +20,24 @@ for filename in pdfFiles:
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
     print(filename)
 '''
-def create_ini_files(path,pdf_files):
-    for pdf_file in pdf_files:
-        for dirpath, dirnames, filenames in os.walk(path):
-            for filename in [f for f in filenames if f.endswith(".pdf")]:
-                print(os.path.splitext(os.path.basename(pdf_file))[0])
-                open(os.path.join(dirpath, '%s.ini' ) % (os.path.splitext(os.path.basename(pdf_file))[0],),'w')
+def create_ini_files(pdf_files):
+    #print((pdf_files))
+    file_path = os.path.abspath(pdf_files)
+    #print(os.path.dirname(file_path))
+    directory = os.path.dirname(file_path)
+    ini_file = os.path.join(directory, os.path.splitext(os.path.basename(pdf_files))[0] + '.ini')
+    with open(ini_file, 'w+') as ini:
+        ini.write('test' + '\n')
+    #print(os.path.splitext(os.path.basename(pdf_files))[0])
+    #open(file_path, '%s.ini' ,'w') % ini_file
+    #for pdf_file in pdf_files:
+    #    print(pdf_files)
+    #    for dirpath, dirnames, filenames in os.walk(path):
+    #        for filename in [f for f in filenames if f.endswith(".pdf")]:
+    #            pass
+                #print(pdf_file)
+                #print(os.path.splitext(os.path.basename(pdf_file))[0])
+                #open(os.path.join(dirpath, '%s.ini' ) % (os.path.basename(pdf_file)[0],),'w')
         #for dirpath, dirnames, filenames in os.walk(pdf_file):
         #    base=os.path.basename(pdf_file)
         #    open(os.path.join(path,'Data/%s.ini') % (os.path.splitext(base))[0], 'w')
@@ -34,9 +46,12 @@ def look_for_pdf(path, pdf_files):
     for dirpath, dirnames, filenames in os.walk(path):
         for filename in [f for f in filenames if f.endswith(".pdf")]:
             #print(filename)
+            pdf_file = os.path.join(dirpath, filename)
+            #print(pdf_file)
+            create_ini_files(pdf_file)
             pdf_files.append(os.path.join(dirpath, filename))
     #pdf_files
-    create_ini_files(path,pdf_files)
+    #create_ini_files(path,pdf_files)
 
 
 
