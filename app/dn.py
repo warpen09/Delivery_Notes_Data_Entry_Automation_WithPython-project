@@ -1,5 +1,8 @@
+import pdfplumber, os, sys
+
+from collections import OrderedDict
 from typing import List, Dict, Tuple, Any, NewType
-import PyPDF2, os, sys
+from PyPDF2 import PdfFileReader
 
 PDF = NewType('PDF', str)
 pdf_Files: List[PDF] = []

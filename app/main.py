@@ -1,5 +1,8 @@
+import pdfplumber, os, sys
+
+from collections import OrderedDict
 from typing import List, Dict, Tuple, Any, NewType
-import PyPDF2, os, sys
+from PyPDF2 import PdfFileReader
 
 PDF = NewType('PDF', str)
 pdf_Files: List[PDF] = []
@@ -20,6 +23,11 @@ for filename in pdfFiles:
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
     print(filename)
 '''
+def look_for_fields_in_pdf(pdf_files):
+    with pdfplumber.open(pdf_files) as pdf:
+        first_page_of_pdf = pdf.pages[0]
+        return dict(first_page_of_pdf.extract_text(x_tolerance=3, y_tolerance=3))
+
 def create_ini_files(pdf_files):
     #print((pdf_files))
     file_path = os.path.abspath(pdf_files)
