@@ -50,6 +50,20 @@ def create_ini_files(pdf_files):
         #for dirpath, dirnames, filenames in os.walk(pdf_file):
         #    base=os.path.basename(pdf_file)
         #    open(os.path.join(path,'Data/%s.ini') % (os.path.splitext(base))[0], 'w')
+        """ with pdfplumber.open("project/Data/formats/format1/folder/1900070.pdf") as pdf:
+         first_page_of_pdf = pdf.pages[0]
+         fields = pdf.doc.catalog["AcroForm"].resolve()["Fields"]
+         form_data = {}
+         selectable_form_data = {}
+         for field in fields:
+            field_name = field.resolve()["T"]
+            field_value = field.resolve()
+            form_data[field_name] = field_value
+    
+        for item in form_data:
+            for key, value in dict(form_data[item]).items():
+                if key == 'V':
+                    selectable_form_data[item] = value """
 
 def look_for_pdf(path, pdf_files):
     for dirpath, dirnames, filenames in os.walk(path):
