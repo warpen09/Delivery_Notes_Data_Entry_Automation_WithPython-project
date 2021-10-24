@@ -26,7 +26,7 @@ for filename in pdfFiles:
 def look_for_fields_in_pdf(pdf_files):
     with pdfplumber.open(pdf_files) as pdf:
         first_page_of_pdf = pdf.pages[0]
-        return dict(first_page_of_pdf.extract_text(x_tolerance=3, y_tolerance=3))
+        return first_page_of_pdf.extract_text(x_tolerance=3, y_tolerance=3)
 
 def create_ini_files(pdf_files):
     #print((pdf_files))
@@ -36,6 +36,7 @@ def create_ini_files(pdf_files):
     ini_file = os.path.join(directory, os.path.splitext(os.path.basename(pdf_files))[0] + '.ini')
     with open(ini_file, 'w+') as ini:
         ini.write('test' + '\n')
+        ini.write(look_for_fields_in_pdf(file_path))
     #print(os.path.splitext(os.path.basename(pdf_files))[0])
     #open(file_path, '%s.ini' ,'w') % ini_file
     #for pdf_file in pdf_files:
